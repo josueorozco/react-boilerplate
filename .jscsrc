@@ -4,6 +4,13 @@
     "validateQuoteMarks": "'",
 	"requireTrailingComma": false,
 	"requireSpaceAfterLineComment": true,
+    "disallowTrailingComma": true,
+    "requirePaddingNewLinesAfterBlocks": true,
+    "requirePaddingNewLinesInObjects": true,
+    "requirePaddingNewlinesBeforeKeywords": true,
+    "requireObjectKeysOnNewLine": true,
+    "requireNewlineBeforeBlockStatements": false,
+    "validateParameterSeparator": ", ",
 	"maximumLineLength": 0,
 	"excludeFiles": [
 		"./vendor",
