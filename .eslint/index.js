@@ -20,6 +20,7 @@ module.exports = {
         webextensions: true
     },
     plugins: [
+        'redux-saga',
         'react',
         'jsx-a11y'
     ],
@@ -59,7 +60,7 @@ module.exports = {
     settings: {
         'import/resolver': {
             webpack: {
-                config: '../internals/webpack/webpack.test.babel.js'
+                config: './internals/webpack/webpack.test.babel.js'
             }
         }
     }

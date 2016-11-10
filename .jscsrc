@@ -1,0 +1,14 @@
+{
+	"preset": "airbnb",
+	"validateIndentation": 4,
+    "validateQuoteMarks": "'",
+	"requireTrailingComma": false,
+	"requireSpaceAfterLineComment": true,
+	"maximumLineLength": 0,
+	"excludeFiles": [
+		"./vendor",
+		"./node_modules",
+		"./public",
+		"./storage"
+	]
+}
