@@ -1,14 +1,15 @@
 require('shelljs/global');
+
 const addCheckMark = require('./helpers/checkmark.js');
 
 if (!which('git')) {
-  echo('Sorry, this script requires git');
-  exit(1);
+    echo('Sorry, this script requires git');
+    exit(1);
 }
 
 if (!test('-e', 'internals/templates')) {
-  echo('The example is deleted already.');
-  exit(1);
+    echo('The example is deleted already.');
+    exit(1);
 }
 
 process.stdout.write('Cleanup started...');
@@ -29,44 +30,33 @@ cp('internals/templates/homePage/homePage.js', 'app/containers/HomePage/index.js
 cp('internals/templates/homePage/messages.js', 'app/containers/HomePage/messages.js');
 
 // Handle Translations
-rm('-rf', 'app/translations/*')
+rm('-rf', 'app/translations/*');
 mkdir('-p', 'app/translations');
-cp('internals/templates/translations/en.json',
-  'app/translations/en.json');
+cp('internals/templates/translations/en.json', 'app/translations/en.json');
 
 // move i18n file
-cp('internals/templates/i18n.js',
-  'app/i18n.js');
+cp('internals/templates/i18n.js', 'app/i18n.js');
 
 // Copy LanguageProvider
 mkdir('-p', 'app/containers/LanguageProvider');
 mkdir('-p', 'app/containers/LanguageProvider/tests');
-cp('internals/templates/languageProvider/actions.js',
-  'app/containers/LanguageProvider/actions.js');
-cp('internals/templates/languageProvider/constants.js',
-  'app/containers/LanguageProvider/constants.js');
-cp('internals/templates/languageProvider/languageProvider.js',
-  'app/containers/LanguageProvider/index.js');
-cp('internals/templates/languageProvider/reducer.js',
-  'app/containers/LanguageProvider/reducer.js');
-cp('internals/templates/languageProvider/selectors.js',
-  'app/containers/LanguageProvider/selectors.js');
+cp('internals/templates/languageProvider/actions.js', 'app/containers/LanguageProvider/actions.js');
+cp('internals/templates/languageProvider/constants.js', 'app/containers/LanguageProvider/constants.js');
+cp('internals/templates/languageProvider/languageProvider.js', 'app/containers/LanguageProvider/index.js');
+cp('internals/templates/languageProvider/reducer.js', 'app/containers/LanguageProvider/reducer.js');
+cp('internals/templates/languageProvider/selectors.js', 'app/containers/LanguageProvider/selectors.js');
 
 // Copy selectors
 mkdir('app/containers/App/tests');
-cp('internals/templates/selectors.js',
-  'app/containers/App/selectors.js');
-cp('internals/templates/selectors.test.js',
-  'app/containers/App/tests/selectors.test.js');
+cp('internals/templates/selectors.js', 'app/containers/App/selectors.js');
+cp('internals/templates/selectors.test.js', 'app/containers/App/tests/selectors.test.js');
 
 // Utils
 rm('-rf', 'app/utils');
 mkdir('app/utils');
 mkdir('app/utils/tests');
-cp('internals/templates/asyncInjectors.js',
-  'app/utils/asyncInjectors.js');
-cp('internals/templates/asyncInjectors.test.js',
-  'app/utils/tests/asyncInjectors.test.js');
+cp('internals/templates/asyncInjectors.js', 'app/utils/asyncInjectors.js');
+cp('internals/templates/asyncInjectors.test.js', 'app/utils/tests/asyncInjectors.test.js');
 
 // Replace the files in the root app/ folder
 cp('internals/templates/app.js', 'app/app.js');
@@ -83,8 +73,8 @@ addCheckMark();
 
 // Commit the changes
 if (exec('git add . --all && git commit -qm "Remove default example"').code !== 0) {
-  echo('\nError: Git commit failed');
-  exit(1);
+    echo('\nError: Git commit failed');
+    exit(1);
 }
 
 echo('\nCleanup done. Happy Coding!!!');
