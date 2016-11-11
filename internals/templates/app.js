@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * app.js
  *
@@ -7,10 +9,8 @@
 import 'babel-polyfill';
 
 // Load the manifest.json file and the .htaccess file
-/* eslint-disable import/no-unresolved, import/extensions */
 import '!file?name=[name].[ext]!./manifest.json';
 import 'file?name=[name].[ext]!./.htaccess';
-/* eslint-enable import/no-unresolved, import/extensions */
 
 // Import all the third party stuff
 import React from 'react';
