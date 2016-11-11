@@ -1,12 +1,3 @@
-/*
-|--------------------------------------------------------------------------
-| {{properCase name }}
-|--------------------------------------------------------------------------
-|
-| Container.
-|
-*/
-
 import React from 'react';
 import { connect } from 'react-redux';
 {{#if wantHeaders}}
@@ -22,6 +13,15 @@ import messages from './messages';
 {{#if wantCSS}}
 import styles from './styles.scss';
 {{/if}}
+
+/*
+|--------------------------------------------------------------------------
+| {{properCase name }}
+|--------------------------------------------------------------------------
+|
+| Container.
+|
+*/
 
 export class {{ properCase name }} extends React.{{{ component }}} { // eslint-disable-line react/prefer-stateless-function
     render() {

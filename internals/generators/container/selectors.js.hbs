@@ -1,12 +1,3 @@
-/*
-|--------------------------------------------------------------------------
-| Init Selectors
-|--------------------------------------------------------------------------
-|
-| select{{ properCase name }}Domain
-|
-*/
-
 import { createSelector } from 'reselect';
 
 /*
@@ -18,7 +9,7 @@ import { createSelector } from 'reselect';
 |
 */
 
-const select{{ properCase name }}Domain = () => (state) => state.get('{{ camelCase name }}');
+const select{{ properCase name }}Domain = () => state => state.get('{{ camelCase name }}');
 
 /*
 |--------------------------------------------------------------------------
@@ -40,8 +31,17 @@ const select{{ properCase name }}Domain = () => (state) => state.get('{{ camelCa
 
 const select{{ properCase name }} = () => createSelector(
     select{{ properCase name }}Domain(),
-    (substate) => substate.toJS()
+    substate => substate.toJS()
 );
+
+/*
+|--------------------------------------------------------------------------
+| Exports
+|--------------------------------------------------------------------------
+|
+| Default and selector specific.
+|
+*/
 
 export default select{{ properCase name }};
 export {

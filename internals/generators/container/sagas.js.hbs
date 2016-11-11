@@ -1,3 +1,5 @@
+// import { take, call, put, select } from 'redux-saga/effects';
+
 /*
 |--------------------------------------------------------------------------
 | {{ camelCase name }} Sagas
@@ -7,14 +9,28 @@
 |
 */
 
-// import { take, call, put, select } from 'redux-saga/effects';
+/*
+|--------------------------------------------------------------------------
+| Saga exports
+|--------------------------------------------------------------------------
+|
+| Individual exports for testing
+|
+*/
 
-// Individual exports for testing
 export function* defaultSaga() {
-    return;
+    return true;
 }
 
-// All sagas to be loaded
+/*
+|--------------------------------------------------------------------------
+| Export default
+|--------------------------------------------------------------------------
+|
+| All sagas to be loaded.
+|
+*/
+
 export default [
     defaultSaga
 ];
