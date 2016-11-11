@@ -1,23 +1,61 @@
-// These are the pages you can go to.
-// They are all wrapped in the App component, which should contain the navbar etc
-// See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
-// about the code splitting business
+/*
+|--------------------------------------------------------------------------
+| Routes
+|--------------------------------------------------------------------------
+|
+| These are the pages you can go to.
+| They are all wrapped in the App component, which should contain the navbar etc
+| See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
+| about the code splitting business
+|
+*/
+
 import { getAsyncInjectors } from './utils/asyncInjectors';
+
+/*
+|--------------------------------------------------------------------------
+| Error Loading
+|--------------------------------------------------------------------------
+|
+| Init error loading
+|
+*/
 
 const errorLoading = (err) => {
     console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
 };
 
+/*
+|--------------------------------------------------------------------------
+| loadModule
+|--------------------------------------------------------------------------
+|
+| Loads component modules
+|
+*/
+
 const loadModule = cb => (componentModule) => {
     cb(null, componentModule.default);
 };
 
+/*
+|--------------------------------------------------------------------------
+| Default export
+|--------------------------------------------------------------------------
+|
+| Exports createRoutes as default
+|
+*/
+
+/**
+ * createRoutes
+ *
+ * @param store
+ * @returns {array}
+ */
 export default function createRoutes(store) {
     // create reusable async injectors using getAsyncInjectors factory
-    const {
-        injectReducer,
-        injectSagas
-    } = getAsyncInjectors(store);
+    const { injectReducer, injectSagas } = getAsyncInjectors(store);
 
     return [{
         path: '/',

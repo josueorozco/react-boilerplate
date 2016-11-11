@@ -1,20 +1,40 @@
-/**
- * Create the store with asynchronously loaded reducers
- */
+/*
+|--------------------------------------------------------------------------
+| store.js
+|--------------------------------------------------------------------------
+|
+| Initializes reducers / sagas for Redux store.
+|
+*/
 
-import {
-    createStore,
-    applyMiddleware,
-    compose
-} from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 
+/*
+|--------------------------------------------------------------------------
+| sagaMiddleware
+|--------------------------------------------------------------------------
+|
+| Init sagas middleware
+|
+*/
+
 const sagaMiddleware = createSagaMiddleware();
 
+/*
+|--------------------------------------------------------------------------
+| Export default
+|--------------------------------------------------------------------------
+|
+| Create the store with asynchronously loaded reducers.
+|
+*/
+
 export default function configureStore(initialState = {}, history) {
+    // ------------------------------------------------------
     // Create the store with two middlewares
     // 1. sagaMiddleware: Makes redux-sagas work
     // 2. routerMiddleware: Syncs the location/URL path to the state
@@ -27,26 +47,29 @@ export default function configureStore(initialState = {}, history) {
         applyMiddleware(...middlewares)
     ];
 
-    // If Redux DevTools Extension is installed use it, otherwise use Redux compose
+    // ------------------------------------------------------
+    // If Redux DevTools Extension is installed use it,
+    // otherwise use Redux compose.
     /* eslint-disable no-underscore-dangle */
     const composeEnhancers =
-        process.env.NODE_ENV !== 'production' &&
-        typeof window === 'object' &&
-        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
-    /* eslint-enable */
+        process.env.NODE_ENV !== 'production' && typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+            window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+            : compose;
 
     const store = createStore(
         createReducer(),
         fromJS(initialState),
         composeEnhancers(...enhancers)
     );
+    /* eslint-enable no-underscore-dangle */
 
+    // ------------------------------------------------------
     // Extensions
     store.runSaga = sagaMiddleware.run;
     store.asyncReducers = {}; // Async reducer registry
     store.asyncSagas = {};
 
+    // ------------------------------------------------------
     // Make reducers hot reloadable, see http://mxs.is/googmo
     /* istanbul ignore next */
     if (module.hot) {
