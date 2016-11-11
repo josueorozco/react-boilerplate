@@ -1,8 +1,11 @@
 /*
- *
- * {{properCase name }}
- *
- */
+|--------------------------------------------------------------------------
+| {{properCase name }}
+|--------------------------------------------------------------------------
+|
+| Container.
+|
+*/
 
 import React from 'react';
 import { connect } from 'react-redux';
@@ -17,31 +20,31 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 {{/if}}
 {{#if wantCSS}}
-import styles from './styles.css';
+import styles from './styles.scss';
 {{/if}}
 
 export class {{ properCase name }} extends React.{{{ component }}} { // eslint-disable-line react/prefer-stateless-function
-  render() {
-    return (
-      {{#if wantCSS}}
-      <div className={{curly true}}styles.{{ camelCase name }}{{curly}}>
-      {{else}}
-      <div>
-      {{/if}}
-      {{#if wantHeaders}}
-        <Helmet
-          title="{{properCase name}}"
-          meta={{curly true}}[
-            {{curly true}} name: 'description', content: 'Description of {{properCase name}}' {{curly}},
-          ]{{curly}}
-        />
-      {{/if}}
-      {{#if wantMessages}}
-        <FormattedMessage {...messages.header} />
-      {{/if}}
-      </div>
-    );
-  }
+    render() {
+        return (
+            {{#if wantCSS}}
+            <div className={{curly true}}styles.{{ camelCase name }}{{curly}}>
+            {{else}}
+            <div>
+            {{/if}}
+            {{#if wantHeaders}}
+            <Helmet
+                title="{{properCase name}}"
+                meta={{curly true}}[
+                    {{curly true}} name: 'description', content: 'Description of {{properCase name}}' {{curly}},
+                ]{{curly}}
+            />
+            {{/if}}
+            {{#if wantMessages}}
+                <FormattedMessage {...messages.header} />
+            {{/if}}
+            </div>
+        );
+    }
 }
 
 {{#if wantActionsAndReducer}}
@@ -49,9 +52,9 @@ const mapStateToProps = select{{properCase name}}();
 {{/if}}
 
 function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
+    return {
+        dispatch
+    };
 }
 
 {{#if wantActionsAndReducer}}

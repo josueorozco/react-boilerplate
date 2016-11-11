@@ -1,8 +1,11 @@
-/**
- * generator/index.js
- *
- * Exports the generators so plop knows them
- */
+/*
+|--------------------------------------------------------------------------
+| generator/index.js
+|--------------------------------------------------------------------------
+|
+| Exports the generators so plop knows them
+|
+*/
 
 const fs = require('fs');
 const componentGenerator = require('./component/index.js');

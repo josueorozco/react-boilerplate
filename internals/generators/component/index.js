@@ -1,8 +1,22 @@
-/**
- * Component Generator
- */
+/*
+|--------------------------------------------------------------------------
+| Component Generator
+|--------------------------------------------------------------------------
+|
+| Generates components.
+|
+*/
 
 const componentExists = require('../utils/componentExists');
+
+/*
+|--------------------------------------------------------------------------
+| Export default
+|--------------------------------------------------------------------------
+|
+| Default export for generating compoent.
+|
+*/
 
 module.exports = {
     description: 'Add an unconnected component',
@@ -71,6 +85,7 @@ module.exports = {
             abortOnFail: true
         }];
 
+        // ------------------------------------------------------
         // If they want a i18n messages file
         if (data.wantMessages) {
             actions.push({

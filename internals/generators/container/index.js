@@ -1,6 +1,11 @@
-/**
- * Container Generator
- */
+/*
+|--------------------------------------------------------------------------
+| Container Generator
+|--------------------------------------------------------------------------
+|
+| Generates containers.
+|
+*/
 
 const componentExists = require('../utils/componentExists');
 
@@ -46,6 +51,7 @@ module.exports = {
         message: 'Do you want i18n messages (i.e. will this component use text)?'
     }],
     actions: (data) => {
+        // ------------------------------------------------------
         // Generate index.js and index.test.js
         const actions = [{
             type: 'add',
@@ -59,6 +65,7 @@ module.exports = {
             abortOnFail: true
         }];
 
+        // ------------------------------------------------------
         // If component wants messages
         if (data.wantMessages) {
             actions.push({
@@ -69,9 +76,11 @@ module.exports = {
             });
         }
 
+        // ------------------------------------------------------
         // If they want actions and a reducer, generate actions.js, constants.js,
         // reducer.js and the corresponding tests for actions and the reducer
         if (data.wantActionsAndReducer) {
+            // ------------------------------------------------------
             // Actions
             actions.push({
                 type: 'add',
@@ -87,6 +96,7 @@ module.exports = {
                 abortOnFail: true
             });
 
+            // ------------------------------------------------------
             // Constants
             actions.push({
                 type: 'add',
@@ -95,6 +105,7 @@ module.exports = {
                 abortOnFail: true
             });
 
+            // ------------------------------------------------------
             // Selectors
             actions.push({
                 type: 'add',
@@ -110,6 +121,7 @@ module.exports = {
                 abortOnFail: true
             });
 
+            // ------------------------------------------------------
             // Reducer
             actions.push({
                 type: 'add',
@@ -126,6 +138,7 @@ module.exports = {
             });
         }
 
+        // ------------------------------------------------------
         // Sagas
         if (data.wantSagas) {
             actions.push({

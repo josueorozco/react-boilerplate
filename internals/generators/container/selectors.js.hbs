@@ -1,25 +1,49 @@
+/*
+|--------------------------------------------------------------------------
+| Init Selectors
+|--------------------------------------------------------------------------
+|
+| select{{ properCase name }}Domain
+|
+*/
+
 import { createSelector } from 'reselect';
 
-/**
- * Direct selector to the {{ camelCase name }} state domain
- */
+/*
+|--------------------------------------------------------------------------
+| Init domain selector
+|--------------------------------------------------------------------------
+|
+| Direct selector to the {{ camelCase name }} state domain
+|
+*/
+
 const select{{ properCase name }}Domain = () => (state) => state.get('{{ camelCase name }}');
 
-/**
- * Other specific selectors
- */
+/*
+|--------------------------------------------------------------------------
+| Other specific selectors
+|--------------------------------------------------------------------------
+|
+| Define other selectors here.
+|
+*/
 
-
-/**
- * Default selector used by {{ properCase name }}
- */
+/*
+|--------------------------------------------------------------------------
+| Default selector
+|--------------------------------------------------------------------------
+|
+| Default selector used by {{ properCase name }}
+|
+*/
 
 const select{{ properCase name }} = () => createSelector(
-  select{{ properCase name }}Domain(),
-  (substate) => substate.toJS()
+    select{{ properCase name }}Domain(),
+    (substate) => substate.toJS()
 );
 
 export default select{{ properCase name }};
 export {
-  select{{ properCase name }}Domain,
+    select{{ properCase name }}Domain
 };

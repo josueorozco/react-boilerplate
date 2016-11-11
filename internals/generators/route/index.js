@@ -1,9 +1,22 @@
-/**
- * Route Generator
- */
+/*
+|--------------------------------------------------------------------------
+| Route generator
+|--------------------------------------------------------------------------
+|
+| Generates routes
+|
+*/
+
 const fs = require('fs');
 const componentExists = require('../utils/componentExists');
 
+
+/**
+ * reducerExists
+ *
+ * @param comp
+ * @returns {boolean}
+ */
 function reducerExists(comp) {
     try {
         fs.accessSync(`app/containers/${comp}/reducer.js`, fs.F_OK);
@@ -14,6 +27,12 @@ function reducerExists(comp) {
     }
 }
 
+/**
+ * sagasExists
+ *
+ * @param comp
+ * @returns {boolean}
+ */
 function sagasExists(comp) {
     try {
         fs.accessSync(`app/containers/${comp}/sagas.js`, fs.F_OK);
@@ -24,8 +43,16 @@ function sagasExists(comp) {
     }
 }
 
+/**
+ * trimTemplateFile
+ *
+ * Loads the template file and trims the whitespace and then
+ * returns the content as a string.
+ *
+ * @param template
+ * @returns {string}
+ */
 function trimTemplateFile(template) {
-    // Loads the template file and trims the whitespace and then returns the content as a string.
     return fs.readFileSync(`internals/generators/route/${template}`, 'utf8').replace(/\s*$/, '');
 }
 
@@ -56,6 +83,7 @@ module.exports = {
         }
     }],
 
+    // ------------------------------------------------------
     // Add the route to the routes.js file above the error route
     // TODO smarter route adding
     actions: (data) => {
